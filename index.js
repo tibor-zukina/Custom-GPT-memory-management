@@ -238,7 +238,7 @@ app.post(URLS.ADMIN_UPDATE_GPT, async (req, res) => {
 });
 
 app.post(URLS.ADMIN_CREATE_GPT, async (req, res) => {
-  const { id, name, shared_memories, isValid } = getAdminGPTCreateParams(req);
+  const { id, name, description, shared_memories, isValid } = getAdminGPTCreateParams(req);
   if (!isValid) {
     return returnErrorResponse(res, 'ID and name are required.', RESPONSE_CODES.BAD_REQUEST);
   }
@@ -249,7 +249,7 @@ app.post(URLS.ADMIN_CREATE_GPT, async (req, res) => {
       return returnErrorResponse(res, 'GPT ID already exists.', RESPONSE_CODES.BAD_REQUEST);
     }
 
-    gptList[id] = { name, shared_memories, access_level: ACCESS_LEVELS.USER };
+    gptList[id] = { name, description, shared_memories, access_level: ACCESS_LEVELS.USER };
     let gptsUpdateSuccess = await updateGPTList(gptList);
 
     if (!gptsUpdateSuccess) {

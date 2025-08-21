@@ -31,12 +31,13 @@ export function getAdminGPTUpdateParams(request) {
 }
 
 export function getAdminGPTCreateParams(request) {
-   const { id, name, shared_memories} = request.body;
+   const { id, name, description, shared_memories } = request.body;
     return {
     id,
     name,
+    description,
     shared_memories,
-    isValid: (id  &&  name)
+    isValid: (id  &&  name && description)
   };
 }
 
