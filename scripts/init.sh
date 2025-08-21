@@ -1,7 +1,7 @@
 # Replace this path with the directory where a memory layer is hosted
+ROOT_PROJECT_PATH="/var/openai/gpt_memory"
+cd $ROOT_PROJECT_PATH
 
-cd /var/openai/gpt_memory
- 
 mkdir memory
 mkdir memory_backups
 mkdir files
