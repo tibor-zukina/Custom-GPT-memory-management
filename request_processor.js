@@ -1,3 +1,5 @@
+import { getMemoryPath, getFilePath } from './data.js';
+
 export function getMemoryAccessParams(request) {
    return {
     user: request.authUser,
