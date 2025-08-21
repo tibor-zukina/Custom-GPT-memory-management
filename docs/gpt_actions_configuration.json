@@ -1,0 +1,206 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GPT Memory API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.perpetuumit.com"
+    }
+  ],
+  "paths": {
+    "/memory/{gptId}": {
+      "get": {
+        "operationId": "getMemory",
+        "summary": "Get a memory or file by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gptId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The ID of the file or memory to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Memory loaded successfully"
+          }
+        }
+      },
+      "post": {
+        "operationId": "updateMemory",
+        "summary": "Save or update memory (as JSON string)",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gptId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The ID of the memory file to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "memory": {
+                    "type": "string",
+                    "description": "Stringified JSON content to store in memory",
+                    "example": "{\"tasks\":[\"email\",\"groceries\"],\"status\":\"active\"}"
+                  }
+                },
+                "required": [
+                  "memory"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Memory saved successfully"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteMemory",
+        "summary": "Delete a memory file by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gptId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The ID of the memory file to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Memory deleted successfully"
+          }
+        }
+      }
+    },
+    "/gpts/{gptId}": {
+      "get": {
+        "operationId": "getGPTInfo",
+        "summary": "Fetch GPT metadata and shared memory access",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gptId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The GPT ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GPT metadata retrieved"
+          }
+        }
+      }
+    },
+    "/files/{gptId}/{filename}": {
+      "get": {
+        "operationId": "getFile",
+        "summary": "Fetch a file by filename for the GPT",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gptId",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "in": "path",
+            "name": "filename",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File fetched successfully"
+          }
+        }
+      },
+      "post": {
+        "operationId": "uploadOrUpdateFile",
+        "summary": "Upload or update a file for a GPT",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gptId",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "in": "path",
+            "name": "filename",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+	    "requestBody": {
+		  "required": true,
+		  "content": {
+			"application/json": {
+			  "schema": {
+				"type": "object",
+				"properties": {
+				  "content": {
+					"type": "string",
+					"description": "Base64-encoded file content"
+				  }
+				},
+				"required": ["content"]
+			  }
+			}
+		  }
+		},
+        "responses": {
+          "200": {
+            "description": "File uploaded or updated"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteFile",
+        "summary": "Delete a file by filename for a GPT",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gptId",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "in": "path",
+            "name": "filename",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File deleted"
+          }
+        }
+      }
+    }
+  }
+}

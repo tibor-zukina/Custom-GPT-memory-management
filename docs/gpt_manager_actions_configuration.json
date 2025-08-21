@@ -1,0 +1,120 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GPT Manager API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.perpetuumit.com"
+    }
+  ],
+  "paths": {
+    "/admin/gpts": {
+      "get": {
+        "operationId": "listAllGPTs",
+        "summary": "List all GPTs with shared memory names",
+        "responses": {
+          "200": {
+            "description": "List of all GPTs"
+          }
+        }
+      }
+    },
+    "/admin/gpts/{gptId}": {
+      "post": {
+        "operationId": "updateGPTSharedMemories",
+        "summary": "Update shared memories of a specific GPT",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gptId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID of the GPT to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "shared_memories": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+				  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Shared memories updated successfully"
+          }
+        }
+      }
+    },
+    "/admin/gpt/create": {
+      "post": {
+        "operationId": "createGPT",
+        "summary": "Create a new GPT with initial configuration",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "string" },
+                  "name": { "type": "string" },
+                  "shared_memories": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  }
+                },
+                "required": ["id", "name"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "GPT created successfully and credentials returned"
+          }
+        }
+      }
+    },
+    "/admin/gpts/credentials/{gptId}": {
+      "get": {
+        "operationId": "getGPTCredentials",
+        "summary": "Get base64 encoded credentials for a GPT",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gptId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID of the GPT to fetch credentials for"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Base64 encoded credentials returned"
+          }
+        }
+      }
+    }
+  }
+}

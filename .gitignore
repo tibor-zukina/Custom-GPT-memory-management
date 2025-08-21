@@ -1,0 +1,7 @@
+node_modules
+files
+memory
+memory_backups
+files_backups
+./auth.json
+./gpts.json

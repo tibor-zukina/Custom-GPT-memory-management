@@ -1,0 +1,52 @@
+{
+  "server": {
+    "PORT": 3000
+  },
+  "responseCodes": {
+    "OK": 200,
+    "BAD_REQUEST": 400,
+    "UNAUTHORIZED": 401,
+    "FORBIDDEN": 403,
+    "NOT_FOUND": 404,
+    "INTERNAL_SERVER_ERROR": 500
+  },
+  "operations": {
+    "GET": "GET",
+    "POST": "POST",
+    "DELETE": "DELETE"
+  },
+  "accessLevels": {
+    "USER": "user",
+    "ADMIN": "admin"
+  },
+  "paths": {
+    "MEMORY_DIR": "memory",
+    "FILES_DIR":  "files",
+    "MEMORY_BACKUPS_DIR": "memory_backups",
+    "FILES_BACKUPS_DIR": "files_backups",
+    "LOG_DIR": "/var/log/gpt_memory",
+    "OUTPUT_LOG_FILE": "output.log",
+    "ERROR_LOG_FILE": "error.log",
+    "GPTS_FILE": "gpts.json",
+    "AUTH_FILE": "auth.json",
+    "ADMIN_PATH": "/admin",
+    "GPTS_PATH": "/gpts",
+    "MEMORY_PATH": "/memory",
+    "FILE_PATH": "/file",
+    "MEMORY_PREFIX": "memory_",
+    "FILES_PREFIX": "files_"
+  },
+  "urls": {
+    "USER_GPTS_LIST": "/gpts/:gptId",
+    "USER_MEMORY": "/memory/:gptId",
+    "USER_FILES": "/files/:gptId/:filename",
+    "ADMIN_GPTS_LIST": "/admin/gpts/",
+    "ADMIN_UPDATE_GPT":  "/admin/gpts/:gptId",
+    "ADMIN_CREATE_GPT": "/admin/gpt/create",
+    "ADMIN_CREDENTIALS": "/admin/gpts/credentials/:gptId"
+  },
+  "data_types": {
+    "MEMORY": "memory",
+    "FILE": "file"
+  }
+}

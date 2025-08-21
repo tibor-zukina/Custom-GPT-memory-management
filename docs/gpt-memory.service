@@ -1,0 +1,19 @@
+[Unit]
+Description=GPT Memory API Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/node /var/openai/gpt_memory/index.js
+StandardOutput=append:/var/log/gpt_memory/output.log
+StandardError=append:/var/log/gpt_memory/error.log
+WorkingDirectory=/var/openai/gpt_memory
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=gpt-memory
+User=nobody
+Environment=NODE_ENV=production PORT=3000
+
+[Install]
+WantedBy=multi-user.target

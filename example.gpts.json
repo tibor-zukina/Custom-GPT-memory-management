@@ -1,0 +1,22 @@
+{
+  "gpt_manager": {
+    "name": "GPT Manager",
+    "shared_memories": [],
+    "access_level": "admin",
+    "description": "Manages private GPTs and their memory-sharing using a remote server configuration."
+  },
+  "todos_reminders_plans": {
+    "name": "TODOs, Reminders, and Plans",
+    "shared_memories": [],
+    "access_level": "user",
+    "description": "Tracks your to-dos, reminders, and long-term plans with progress updates and organized lists."
+  },
+  "shopping_wishlist_planner": {
+    "name": "Shopping Wishlist Planner",
+    "shared_memories": [
+      "todos_reminders_plans"
+    ],
+    "access_level": "user",
+    "description": "Smart wishlist planner with item search, export, and complex query handling"
+  }
+}
