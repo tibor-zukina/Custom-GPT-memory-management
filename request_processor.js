@@ -26,7 +26,7 @@ export function getAdminGPTUpdateParams(request) {
     gptId,
     shared_memories,
     description,
-    isValid: (Array.isArray(shared_memories) && description)
+    isValid: (Array.isArray(shared_memories) || description)
   };
 }
 
