@@ -79,6 +79,6 @@ systemctl status gpt-memory
 ```
 ### Memory data
 
-- The memories of each of the custom GPTs can be found in the `memory` folder of the `data` directory - e.g. `memory/custom-gpt.json`
-- Files created by each of the custom GPTs can be found in their dedicated directories of the `files` folder of the `data` directory - e.g. `files/custom-gpt/`
-- Backups of the memory and files are created after every change submitted to the memory or files and can viewer or recovered from the `memory_backups` and `files_backups` directories
+- The memories of each of the custom GPTs can be found in the `memory` folder of the `data` directory - e.g. `data/memory/custom-gpt.json`
+- Files created by each of the custom GPTs can be found in their dedicated directories of the `files` folder of the `data` directory - e.g. `data/files/custom-gpt/`
+- Backups of the memory and files are created after every change submitted to the memory or files and can viewed or recovered from the `data/memory_backups` and `data/files_backups/` directories
