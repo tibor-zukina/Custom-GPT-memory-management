@@ -9,10 +9,11 @@ StandardError=append:/var/log/gpt_memory/error.log
 WorkingDirectory=/var/openai/gpt_memory
 Restart=always
 RestartSec=10
-StandardOutput=syslog
-StandardError=syslog
+StandardOutput=journal
+StandardError=journal
 SyslogIdentifier=gpt-memory
-User=nobody
+User=gptmem
+Group=gptmem
 Environment=NODE_ENV=production PORT=3000
 
 [Install]
