@@ -44,6 +44,14 @@ cd /var/openai/gpt_memory
 npm install
 ```
 
+- Create the dedicated user for a GPT memory and the logging directory:
+
+```bash
+sudo useradd -r -s /bin/false gptmem
+sudo mkdir -p /var/log/gpt_memory
+sudo chown gptmem:gptmem /var/log/gpt_memory
+```
+
 - Create the `gpt-memory` service that will make your server run in the background:
   - `nano /etc/systemd/system/gpt-memory.service` (copy the content from `docs/gpt-memory.service`)
   - `systemctl daemon-reload`
