@@ -44,12 +44,13 @@ cd /var/openai/gpt_memory
 npm install
 ```
 
-- Create the dedicated user for a GPT memory and the logging directory:
+- Create the dedicated user for a GPT memory, create the logging directory under the ownership of that user, and make that user the owner of the root project directory:
 
 ```bash
-sudo useradd -r -s /bin/false gptmem
-sudo mkdir -p /var/log/gpt_memory
-sudo chown gptmem:gptmem /var/log/gpt_memory
+useradd -r -s /bin/false gptmem
+mkdir -p /var/log/gpt_memory
+chown gptmem:gptmem /var/log/gpt_memory
+chown -R gptmem:gptmem /var/openai/gpt_memory
 ```
 
 - Create the `gpt-memory` service that will make your server run in the background:
